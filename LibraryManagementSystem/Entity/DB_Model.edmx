@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BOOK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ISBN" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PRICE" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="TYPE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PUBLISHER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AUTHOR" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CATEGORY" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COUNT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="BOOK_ID" Type="int" Nullable="false" />
+          <Property Name="TOTAL_COUNT" Type="int" Nullable="false" />
+          <Property Name="CURRENT_COUNT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ISSUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="BOOK_ID" Type="int" Nullable="false" />
+          <Property Name="MEMBER_ID" Type="int" Nullable="false" />
+          <Property Name="ISSUE_DATE" Type="date" Nullable="false" />
+          <Property Name="RETURN_DATE" Type="date" Nullable="false" />
+          <Property Name="ISSUED_BY" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="COMMENT" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MEMBER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FINE" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="EXPIRY" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="PERMISSION" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_COUNT_BOOK">
+          <End Role="BOOK" Type="Self.BOOK" Multiplicity="1" />
+          <End Role="COUNT" Type="Self.COUNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOOK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COUNT">
+              <PropertyRef Name="BOOK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISSUE_BOOK">
+          <End Role="BOOK" Type="Self.BOOK" Multiplicity="1" />
+          <End Role="ISSUE" Type="Self.ISSUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOOK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ISSUE">
+              <PropertyRef Name="BOOK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISSUE_MEMBER">
+          <End Role="MEMBER" Type="Self.MEMBER" Multiplicity="1" />
+          <End Role="ISSUE" Type="Self.ISSUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEMBER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ISSUE">
+              <PropertyRef Name="MEMBER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LMSModelStoreContainer">
+          <EntitySet Name="BOOK" EntityType="Self.BOOK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COUNT" EntityType="Self.COUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ISSUE" EntityType="Self.ISSUE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEMBER" EntityType="Self.MEMBER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_COUNT_BOOK" Association="Self.FK_COUNT_BOOK">
+            <End Role="BOOK" EntitySet="BOOK" />
+            <End Role="COUNT" EntitySet="COUNT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISSUE_BOOK" Association="Self.FK_ISSUE_BOOK">
+            <End Role="BOOK" EntitySet="BOOK" />
+            <End Role="ISSUE" EntitySet="ISSUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISSUE_MEMBER" Association="Self.FK_ISSUE_MEMBER">
+            <End Role="MEMBER" EntitySet="MEMBER" />
+            <End Role="ISSUE" EntitySet="ISSUE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BOOK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ISBN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PUBLISHER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AUTHOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CATEGORY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COUNTs" Relationship="Self.FK_COUNT_BOOK" FromRole="BOOK" ToRole="COUNT" />
+          <NavigationProperty Name="ISSUEs" Relationship="Self.FK_ISSUE_BOOK" FromRole="BOOK" ToRole="ISSUE" />
+        </EntityType>
+        <EntityType Name="COUNT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="BOOK_ID" Type="Int32" Nullable="false" />
+          <Property Name="TOTAL_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="CURRENT_COUNT" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BOOK" Relationship="Self.FK_COUNT_BOOK" FromRole="COUNT" ToRole="BOOK" />
+        </EntityType>
+        <EntityType Name="ISSUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="BOOK_ID" Type="Int32" Nullable="false" />
+          <Property Name="MEMBER_ID" Type="Int32" Nullable="false" />
+          <Property Name="ISSUE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RETURN_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ISSUED_BY" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COMMENT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BOOK" Relationship="Self.FK_ISSUE_BOOK" FromRole="ISSUE" ToRole="BOOK" />
+          <NavigationProperty Name="MEMBER" Relationship="Self.FK_ISSUE_MEMBER" FromRole="ISSUE" ToRole="MEMBER" />
+        </EntityType>
+        <EntityType Name="MEMBER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FINE" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="EXPIRY" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ISSUEs" Relationship="Self.FK_ISSUE_MEMBER" FromRole="MEMBER" ToRole="ISSUE" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PERMISSION" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_COUNT_BOOK">
+          <End Role="BOOK" Type="Self.BOOK" Multiplicity="1" />
+          <End Role="COUNT" Type="Self.COUNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOOK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COUNT">
+              <PropertyRef Name="BOOK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISSUE_BOOK">
+          <End Role="BOOK" Type="Self.BOOK" Multiplicity="1" />
+          <End Role="ISSUE" Type="Self.ISSUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOOK">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ISSUE">
+              <PropertyRef Name="BOOK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ISSUE_MEMBER">
+          <End Role="MEMBER" Type="Self.MEMBER" Multiplicity="1" />
+          <End Role="ISSUE" Type="Self.ISSUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEMBER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ISSUE">
+              <PropertyRef Name="MEMBER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BOOKs" EntityType="Self.BOOK" />
+          <EntitySet Name="COUNTs" EntityType="Self.COUNT" />
+          <EntitySet Name="ISSUEs" EntityType="Self.ISSUE" />
+          <EntitySet Name="MEMBERs" EntityType="Self.MEMBER" />
+          <EntitySet Name="USERs" EntityType="Self.USER" />
+          <AssociationSet Name="FK_COUNT_BOOK" Association="Self.FK_COUNT_BOOK">
+            <End Role="BOOK" EntitySet="BOOKs" />
+            <End Role="COUNT" EntitySet="COUNTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISSUE_BOOK" Association="Self.FK_ISSUE_BOOK">
+            <End Role="BOOK" EntitySet="BOOKs" />
+            <End Role="ISSUE" EntitySet="ISSUEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ISSUE_MEMBER" Association="Self.FK_ISSUE_MEMBER">
+            <End Role="MEMBER" EntitySet="MEMBERs" />
+            <End Role="ISSUE" EntitySet="ISSUEs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LMSModelStoreContainer" CdmEntityContainer="LMSEntities">
+          <EntitySetMapping Name="BOOKs">
+            <EntityTypeMapping TypeName="LMSModel.BOOK">
+              <MappingFragment StoreEntitySet="BOOK">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="PUBLISHER" ColumnName="PUBLISHER" />
+                <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUNTs">
+            <EntityTypeMapping TypeName="LMSModel.COUNT">
+              <MappingFragment StoreEntitySet="COUNT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BOOK_ID" ColumnName="BOOK_ID" />
+                <ScalarProperty Name="TOTAL_COUNT" ColumnName="TOTAL_COUNT" />
+                <ScalarProperty Name="CURRENT_COUNT" ColumnName="CURRENT_COUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ISSUEs">
+            <EntityTypeMapping TypeName="LMSModel.ISSUE">
+              <MappingFragment StoreEntitySet="ISSUE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BOOK_ID" ColumnName="BOOK_ID" />
+                <ScalarProperty Name="MEMBER_ID" ColumnName="MEMBER_ID" />
+                <ScalarProperty Name="ISSUE_DATE" ColumnName="ISSUE_DATE" />
+                <ScalarProperty Name="RETURN_DATE" ColumnName="RETURN_DATE" />
+                <ScalarProperty Name="ISSUED_BY" ColumnName="ISSUED_BY" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEMBERs">
+            <EntityTypeMapping TypeName="LMSModel.MEMBER">
+              <MappingFragment StoreEntitySet="MEMBER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="FINE" ColumnName="FINE" />
+                <ScalarProperty Name="EXPIRY" ColumnName="EXPIRY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="LMSModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="PERMISSION" ColumnName="PERMISSION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

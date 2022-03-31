@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aad7c52e3807413d97a506e2f76e1975" Name="Diagram1">
+        <EntityTypeShape EntityType="LMSModel.BOOK" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.COUNT" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.ISSUE" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.MEMBER" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSModel.USER" Width="1.5" PointX="2.75" PointY="6.625" IsExpanded="true" />
+        <AssociationConnector Association="LMSModel.FK_COUNT_BOOK" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_ISSUE_BOOK" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSModel.FK_ISSUE_MEMBER" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
