@@ -155,6 +155,7 @@
     <Compile Include="UI\ViewBooks.Designer.cs">
       <DependentUpon>ViewBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\FineUtils.cs" />
     <EmbeddedResource Include="UI\AddBook.resx">
       <DependentUpon>AddBook.cs</DependentUpon>
     </EmbeddedResource>

@@ -14,17 +14,32 @@ namespace LibraryManagementSystem.DAO
 
         public ISSUE getIssueById(int Id)
         {
-            return context.ISSUEs.Where(i => i.ID == Id).FirstOrDefault();
+            return context.ISSUEs.Where(i => i.ID == Id && i.COMMENT.Equals("ISSUED")).FirstOrDefault();
         }
 
         public List<ISSUE> getIssuesByBookId(int BookId)
         {
-            return context.ISSUEs.Where(i => i.BOOK_ID == BookId).ToList<ISSUE>();
+            return context.ISSUEs.Where(i => i.BOOK_ID == BookId && i.COMMENT.Equals("ISSUED")).ToList<ISSUE>();
+        }
+
+        public List<ISSUE> getIssuesByMemberId(int MemberId)
+        {
+            return context.ISSUEs.Where(i => i.MEMBER_ID == MemberId && i.COMMENT.Equals("ISSUED")).ToList<ISSUE>();
+        }
+
+        public List<ISSUE> getIssuesByBookIdAndMemberId(int BookId, int MemberId)
+        {
+            return context.ISSUEs.Where(i => i.BOOK_ID == BookId && i.MEMBER_ID == MemberId && i.COMMENT.Equals("ISSUED")).ToList<ISSUE>();
         }
 
         public List<ISSUE> getAllIssues()
         {
-            return context.ISSUEs.ToList<ISSUE>();
+            return context.ISSUEs.Where(i => i.COMMENT.Equals("ISSUED")).ToList<ISSUE>();
+        }
+
+        public List<ISSUE> getAllReturns()
+        {
+            return context.ISSUEs.Where(i => i.COMMENT.Equals("RETURNED")).ToList<ISSUE>();
         }
 
         public int issueBook(ISSUE Issue)
@@ -45,6 +60,17 @@ namespace LibraryManagementSystem.DAO
                 Issue.RETURN_DATE = ReturnDate;
                 Issue.ISSUED_BY = IssuedBy;
                 Issue.COMMENT = Comment;
+
+                context.SaveChanges();
+            }
+        }
+
+        public void returnBook(int Id)
+        {
+            ISSUE Issue = context.ISSUEs.SingleOrDefault(i => i.ID == Id);
+            if (Issue != null)
+            {
+                Issue.COMMENT = "RETURNED";
 
                 context.SaveChanges();
             }

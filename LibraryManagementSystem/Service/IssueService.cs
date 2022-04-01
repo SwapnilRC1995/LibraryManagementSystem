@@ -13,6 +13,51 @@ namespace LibraryManagementSystem.Service
     {
         private IssueDAO IssueDAO = new IssueDAO();
 
+        public ISSUE getIssueById(int Id)
+        {
+            return IssueDAO.getIssueById(Id);
+        }
+
+        public List<ISSUE> getAllIssues()
+        {
+            return IssueDAO.getAllIssues();
+        }
+
+        public List<ISSUE> getIssuesByBookId(int BookId)
+        {
+            return IssueDAO.getIssuesByBookId(BookId);
+        }
+
+        public List<ISSUE> getIssuesByMemberId(int MemberId)
+        {
+            return IssueDAO.getIssuesByMemberId(MemberId);
+        }
+
+        public List<ISSUE> getIssuesByBookIdAndMemberId(int BookId, int MemberId)
+        {
+            return IssueDAO.getIssuesByBookIdAndMemberId(BookId, MemberId);
+        }
+
+        public int issueBook(int BookId, int MemberId, string IssuedBy)
+        {
+            ISSUE Issue = new ISSUE();
+            Issue.BOOK_ID = BookId;
+            Issue.MEMBER_ID = MemberId;
+            Issue.ISSUE_DATE = DateTime.Now;
+            Issue.RETURN_DATE = DateTime.Now.AddDays(7);
+            Issue.ISSUED_BY = IssuedBy;
+            Issue.COMMENT = "ISSUED";
+
+            List<ISSUE> Issues = IssueDAO.getAllIssues();
+            Issue.ID = !Issues.Any() ? 1001 : Issues.Last().ID + 1;
+
+            return IssueDAO.issueBook(Issue);
+        }
+
+        public void returnBook(int Id)
+        {
+            IssueDAO.returnBook(Id);
+        }
 
     }
 }
