@@ -75,7 +75,7 @@ namespace LibraryManagementSystem.UI
             // 
             this.addNewBookToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.plus;
             this.addNewBookToolStripMenuItem.Name = "addNewBookToolStripMenuItem";
-            this.addNewBookToolStripMenuItem.Size = new System.Drawing.Size(221, 32);
+            this.addNewBookToolStripMenuItem.Size = new System.Drawing.Size(212, 32);
             this.addNewBookToolStripMenuItem.Text = "Add new book";
             this.addNewBookToolStripMenuItem.Click += new System.EventHandler(this.addNewBookToolStripMenuItem_Click);
             // 
@@ -83,7 +83,7 @@ namespace LibraryManagementSystem.UI
             // 
             this.viewBooksToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.eye;
             this.viewBooksToolStripMenuItem.Name = "viewBooksToolStripMenuItem";
-            this.viewBooksToolStripMenuItem.Size = new System.Drawing.Size(221, 32);
+            this.viewBooksToolStripMenuItem.Size = new System.Drawing.Size(212, 32);
             this.viewBooksToolStripMenuItem.Text = "View books";
             this.viewBooksToolStripMenuItem.Click += new System.EventHandler(this.viewBooksToolStripMenuItem_Click);
             // 
@@ -113,6 +113,7 @@ namespace LibraryManagementSystem.UI
             this.viewMembersToolStripMenuItem.Name = "viewMembersToolStripMenuItem";
             this.viewMembersToolStripMenuItem.Size = new System.Drawing.Size(239, 32);
             this.viewMembersToolStripMenuItem.Text = "View members";
+            this.viewMembersToolStripMenuItem.Click += new System.EventHandler(this.viewMembersToolStripMenuItem_Click);
             // 
             // iSSUEBOOKToolStripMenuItem
             // 
@@ -132,6 +133,7 @@ namespace LibraryManagementSystem.UI
             this.rETURNBOOKToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 0, 15, 0);
             this.rETURNBOOKToolStripMenuItem.Size = new System.Drawing.Size(191, 32);
             this.rETURNBOOKToolStripMenuItem.Text = "RETURN BOOK";
+            this.rETURNBOOKToolStripMenuItem.Click += new System.EventHandler(this.rETURNBOOKToolStripMenuItem_Click);
             // 
             // eXITToolStripMenuItem
             // 

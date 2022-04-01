@@ -58,5 +58,17 @@ namespace LibraryManagementSystem.UI
             ViewBooks viewBooks = new ViewBooks();
             viewBooks.Show();
         }
+
+        private void viewMembersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewMembers viewMembers = new ViewMembers();
+            viewMembers.Show();
+        }
+
+        private void rETURNBOOKToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReturnBook returnBook = new ReturnBook();
+            returnBook.Show();
+        }
     }
 }

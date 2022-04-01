@@ -166,7 +166,6 @@ namespace LibraryManagementSystem.UI
 
         private void BookDetails_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Result.Text = e.ColumnIndex+"";
             if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && BookDetails.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 selectedID = int.Parse(BookDetails.Rows[e.RowIndex].Cells[0].Value.ToString());
