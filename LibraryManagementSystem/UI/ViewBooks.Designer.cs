@@ -29,10 +29,12 @@ namespace LibraryManagementSystem.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.header = new System.Windows.Forms.Label();
             this.BookDetails = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Result = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.PublisherTB = new System.Windows.Forms.TextBox();
             this.CancelBtn = new System.Windows.Forms.Button();
@@ -54,14 +56,16 @@ namespace LibraryManagementSystem.UI
             this.TitleTB = new System.Windows.Forms.TextBox();
             this.PriceTB = new System.Windows.Forms.TextBox();
             this.IsbnTB = new System.Windows.Forms.TextBox();
-            this.Result = new System.Windows.Forms.Label();
+            this.CloseBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BookDetails)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.CloseBox);
             this.panel1.Controls.Add(this.header);
             this.panel1.Location = new System.Drawing.Point(12, 13);
             this.panel1.Name = "panel1";
@@ -80,13 +84,23 @@ namespace LibraryManagementSystem.UI
             // 
             // BookDetails
             // 
+            this.BookDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.BookDetails.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.BookDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BookDetails.DefaultCellStyle = dataGridViewCellStyle5;
             this.BookDetails.Location = new System.Drawing.Point(12, 84);
             this.BookDetails.Name = "BookDetails";
+            this.BookDetails.ReadOnly = true;
             this.BookDetails.Size = new System.Drawing.Size(1241, 295);
             this.BookDetails.TabIndex = 1;
             this.BookDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BookDetails_CellClick);
-            this.BookDetails.ReadOnly = true;
             // 
             // panel2
             // 
@@ -116,6 +130,16 @@ namespace LibraryManagementSystem.UI
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1241, 258);
             this.panel2.TabIndex = 2;
+            // 
+            // Result
+            // 
+            this.Result.AutoSize = true;
+            this.Result.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Result.ForeColor = System.Drawing.Color.Crimson;
+            this.Result.Location = new System.Drawing.Point(29, 168);
+            this.Result.Name = "Result";
+            this.Result.Size = new System.Drawing.Size(0, 18);
+            this.Result.TabIndex = 46;
             // 
             // label9
             // 
@@ -320,15 +344,17 @@ namespace LibraryManagementSystem.UI
             this.IsbnTB.TabIndex = 24;
             this.IsbnTB.TextChanged += new System.EventHandler(this.IsbnTB_TextChanged);
             // 
-            // Result
+            // CloseBox
             // 
-            this.Result.AutoSize = true;
-            this.Result.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Result.ForeColor = System.Drawing.Color.Crimson;
-            this.Result.Location = new System.Drawing.Point(29, 168);
-            this.Result.Name = "Result";
-            this.Result.Size = new System.Drawing.Size(0, 18);
-            this.Result.TabIndex = 46;
+            this.CloseBox.Image = global::LibraryManagementSystem.Properties.Resources.exit;
+            this.CloseBox.InitialImage = global::LibraryManagementSystem.Properties.Resources.exit;
+            this.CloseBox.Location = new System.Drawing.Point(1212, 19);
+            this.CloseBox.Name = "CloseBox";
+            this.CloseBox.Size = new System.Drawing.Size(28, 26);
+            this.CloseBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CloseBox.TabIndex = 2;
+            this.CloseBox.TabStop = false;
+            this.CloseBox.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // ViewBooks
             // 
@@ -349,6 +375,7 @@ namespace LibraryManagementSystem.UI
             ((System.ComponentModel.ISupportInitialize)(this.BookDetails)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -381,5 +408,6 @@ namespace LibraryManagementSystem.UI
         private System.Windows.Forms.TextBox PriceTB;
         private System.Windows.Forms.TextBox IsbnTB;
         private System.Windows.Forms.Label Result;
+        private System.Windows.Forms.PictureBox CloseBox;
     }
 }

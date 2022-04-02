@@ -49,7 +49,7 @@ namespace LibraryManagementSystem.UI
 
         private void iSSUEBOOKToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IssueBook issueBook = new IssueBook();
+            IssueBook issueBook = new IssueBook(this.UserName);
             issueBook.Show();
         }
 

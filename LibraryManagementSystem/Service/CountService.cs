@@ -16,13 +16,13 @@ namespace LibraryManagementSystem.Service
         public int getCurrentCount(int BookId)
         {
             Count = CountDAO.getCountByBook(BookId);
-            return Count.CURRENT_COUNT;
+            return Count != null ? Count.CURRENT_COUNT : -1;
         }
 
         public int getTotalCount(int BookId)
         {
             Count = CountDAO.getCountByBook(BookId);
-            return Count.TOTAL_COUNT;
+            return Count != null? Count.TOTAL_COUNT : -1;
         }
 
         public void addCount(int BookId, int TotalCount)

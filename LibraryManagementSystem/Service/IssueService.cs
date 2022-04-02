@@ -38,13 +38,13 @@ namespace LibraryManagementSystem.Service
             return IssueDAO.getIssuesByBookIdAndMemberId(BookId, MemberId);
         }
 
-        public int issueBook(int BookId, int MemberId, string IssuedBy)
+        public int issueBook(int BookId, int MemberId, string IssuedBy, DateTime IssuedOn, DateTime ReturnBy)
         {
             ISSUE Issue = new ISSUE();
             Issue.BOOK_ID = BookId;
             Issue.MEMBER_ID = MemberId;
-            Issue.ISSUE_DATE = DateTime.Now;
-            Issue.RETURN_DATE = DateTime.Now.AddDays(7);
+            Issue.ISSUE_DATE = IssuedOn;
+            Issue.RETURN_DATE = ReturnBy;
             Issue.ISSUED_BY = IssuedBy;
             Issue.COMMENT = "ISSUED";
 

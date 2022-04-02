@@ -198,5 +198,10 @@ namespace LibraryManagementSystem.UI
                 CountTB.Text = CountService.getTotalCount(selectedID)+"";
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

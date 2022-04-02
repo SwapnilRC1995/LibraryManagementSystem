@@ -137,5 +137,10 @@ namespace LibraryManagementSystem.UI
                 }
             }
         }
+
+        private void CloseBox_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

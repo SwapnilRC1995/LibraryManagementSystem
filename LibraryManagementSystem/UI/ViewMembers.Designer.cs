@@ -45,13 +45,16 @@ namespace LibraryManagementSystem.UI
             this.ExpiryTB = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.FineTB = new System.Windows.Forms.TextBox();
+            this.CloseBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MemberDetails)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.CloseBox);
             this.panel1.Controls.Add(this.header);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
@@ -70,10 +73,13 @@ namespace LibraryManagementSystem.UI
             // 
             // MemberDetails
             // 
+            this.MemberDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.MemberDetails.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.MemberDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MemberDetails.Location = new System.Drawing.Point(12, 83);
             this.MemberDetails.Name = "MemberDetails";
             this.MemberDetails.ReadOnly = true;
+            this.MemberDetails.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MemberDetails.Size = new System.Drawing.Size(1241, 295);
             this.MemberDetails.TabIndex = 2;
             this.MemberDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MemberDetails_CellClick);
@@ -221,6 +227,18 @@ namespace LibraryManagementSystem.UI
             this.FineTB.TabIndex = 36;
             this.FineTB.TextChanged += new System.EventHandler(this.FineTB_TextChanged);
             // 
+            // CloseBox
+            // 
+            this.CloseBox.Image = global::LibraryManagementSystem.Properties.Resources.exit;
+            this.CloseBox.InitialImage = global::LibraryManagementSystem.Properties.Resources.exit;
+            this.CloseBox.Location = new System.Drawing.Point(1212, 19);
+            this.CloseBox.Name = "CloseBox";
+            this.CloseBox.Size = new System.Drawing.Size(28, 26);
+            this.CloseBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CloseBox.TabIndex = 3;
+            this.CloseBox.TabStop = false;
+            this.CloseBox.Click += new System.EventHandler(this.CloseBox_Click);
+            // 
             // ViewMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +257,7 @@ namespace LibraryManagementSystem.UI
             ((System.ComponentModel.ISupportInitialize)(this.MemberDetails)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -261,5 +280,6 @@ namespace LibraryManagementSystem.UI
         private System.Windows.Forms.TextBox ExpiryTB;
         private System.Windows.Forms.RadioButton ExtendMonth;
         private System.Windows.Forms.RadioButton ExtendYear;
+        private System.Windows.Forms.PictureBox CloseBox;
     }
 }
