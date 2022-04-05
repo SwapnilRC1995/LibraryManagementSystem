@@ -30,26 +30,26 @@ namespace LibraryManagementSystem.UI
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CloseBox = new System.Windows.Forms.PictureBox();
             this.header = new System.Windows.Forms.Label();
             this.MemberDetails = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.FineTB = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ExpiryTB = new System.Windows.Forms.TextBox();
+            this.ExtendMonth = new System.Windows.Forms.RadioButton();
+            this.ExtendYear = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.Result = new System.Windows.Forms.Label();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.NameTB = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ExtendMonth = new System.Windows.Forms.RadioButton();
-            this.ExtendYear = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ExpiryTB = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.FineTB = new System.Windows.Forms.TextBox();
-            this.CloseBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemberDetails)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CloseBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -60,6 +60,18 @@ namespace LibraryManagementSystem.UI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1241, 65);
             this.panel1.TabIndex = 1;
+            // 
+            // CloseBox
+            // 
+            this.CloseBox.Image = global::LibraryManagementSystem.Properties.Resources.exit;
+            this.CloseBox.InitialImage = global::LibraryManagementSystem.Properties.Resources.exit;
+            this.CloseBox.Location = new System.Drawing.Point(1212, 19);
+            this.CloseBox.Name = "CloseBox";
+            this.CloseBox.Size = new System.Drawing.Size(28, 26);
+            this.CloseBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CloseBox.TabIndex = 3;
+            this.CloseBox.TabStop = false;
+            this.CloseBox.Click += new System.EventHandler(this.CloseBox_Click);
             // 
             // header
             // 
@@ -103,12 +115,87 @@ namespace LibraryManagementSystem.UI
             this.panel2.Size = new System.Drawing.Size(1241, 146);
             this.panel2.TabIndex = 3;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(650, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 18);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "FINE";
+            // 
+            // FineTB
+            // 
+            this.FineTB.BackColor = System.Drawing.SystemColors.Window;
+            this.FineTB.Location = new System.Drawing.Point(712, 28);
+            this.FineTB.Name = "FineTB";
+            this.FineTB.Size = new System.Drawing.Size(172, 20);
+            this.FineTB.TabIndex = 36;
+            this.FineTB.TextChanged += new System.EventHandler(this.FineTB_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(331, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 18);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "EXPIRY DATE";
+            // 
+            // ExpiryTB
+            // 
+            this.ExpiryTB.BackColor = System.Drawing.SystemColors.Window;
+            this.ExpiryTB.Location = new System.Drawing.Point(460, 28);
+            this.ExpiryTB.Name = "ExpiryTB";
+            this.ExpiryTB.ReadOnly = true;
+            this.ExpiryTB.Size = new System.Drawing.Size(154, 20);
+            this.ExpiryTB.TabIndex = 34;
+            this.ExpiryTB.TextChanged += new System.EventHandler(this.ExpiryTB_TextChanged);
+            // 
+            // ExtendMonth
+            // 
+            this.ExtendMonth.AutoSize = true;
+            this.ExtendMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExtendMonth.Location = new System.Drawing.Point(1143, 27);
+            this.ExtendMonth.Name = "ExtendMonth";
+            this.ExtendMonth.Size = new System.Drawing.Size(65, 21);
+            this.ExtendMonth.TabIndex = 33;
+            this.ExtendMonth.TabStop = true;
+            this.ExtendMonth.Text = "Month";
+            this.ExtendMonth.UseVisualStyleBackColor = true;
+            this.ExtendMonth.CheckedChanged += new System.EventHandler(this.ExtendMonth_CheckedChanged);
+            // 
+            // ExtendYear
+            // 
+            this.ExtendYear.AutoSize = true;
+            this.ExtendYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExtendYear.Location = new System.Drawing.Point(1072, 27);
+            this.ExtendYear.Name = "ExtendYear";
+            this.ExtendYear.Size = new System.Drawing.Size(56, 21);
+            this.ExtendYear.TabIndex = 32;
+            this.ExtendYear.TabStop = true;
+            this.ExtendYear.Text = "Year";
+            this.ExtendYear.UseVisualStyleBackColor = true;
+            this.ExtendYear.CheckedChanged += new System.EventHandler(this.ExtendYear_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(913, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 18);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Extend Expiry Date?";
+            // 
             // Result
             // 
             this.Result.AutoSize = true;
             this.Result.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Result.ForeColor = System.Drawing.Color.Crimson;
-            this.Result.Location = new System.Drawing.Point(382, 69);
+            this.Result.Location = new System.Drawing.Point(24, 71);
             this.Result.Name = "Result";
             this.Result.Size = new System.Drawing.Size(0, 18);
             this.Result.TabIndex = 30;
@@ -151,94 +238,6 @@ namespace LibraryManagementSystem.UI
             this.NameTB.TabIndex = 26;
             this.NameTB.TextChanged += new System.EventHandler(this.NameTB_TextChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(913, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 18);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "Extend Expiry Date?";
-            // 
-            // ExtendMonth
-            // 
-            this.ExtendMonth.AutoSize = true;
-            this.ExtendMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExtendMonth.Location = new System.Drawing.Point(1143, 27);
-            this.ExtendMonth.Name = "ExtendMonth";
-            this.ExtendMonth.Size = new System.Drawing.Size(65, 21);
-            this.ExtendMonth.TabIndex = 33;
-            this.ExtendMonth.TabStop = true;
-            this.ExtendMonth.Text = "Month";
-            this.ExtendMonth.UseVisualStyleBackColor = true;
-            this.ExtendMonth.CheckedChanged += new System.EventHandler(this.ExtendMonth_CheckedChanged);
-            // 
-            // ExtendYear
-            // 
-            this.ExtendYear.AutoSize = true;
-            this.ExtendYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExtendYear.Location = new System.Drawing.Point(1072, 27);
-            this.ExtendYear.Name = "ExtendYear";
-            this.ExtendYear.Size = new System.Drawing.Size(56, 21);
-            this.ExtendYear.TabIndex = 32;
-            this.ExtendYear.TabStop = true;
-            this.ExtendYear.Text = "Year";
-            this.ExtendYear.UseVisualStyleBackColor = true;
-            this.ExtendYear.CheckedChanged += new System.EventHandler(this.ExtendYear_CheckedChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(331, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 18);
-            this.label3.TabIndex = 35;
-            this.label3.Text = "EXPIRY DATE";
-            // 
-            // ExpiryTB
-            // 
-            this.ExpiryTB.BackColor = System.Drawing.SystemColors.Window;
-            this.ExpiryTB.Location = new System.Drawing.Point(460, 28);
-            this.ExpiryTB.Name = "ExpiryTB";
-            this.ExpiryTB.ReadOnly = true;
-            this.ExpiryTB.Size = new System.Drawing.Size(154, 20);
-            this.ExpiryTB.TabIndex = 34;
-            this.ExpiryTB.TextChanged += new System.EventHandler(this.ExpiryTB_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(650, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 18);
-            this.label4.TabIndex = 37;
-            this.label4.Text = "FINE";
-            // 
-            // FineTB
-            // 
-            this.FineTB.BackColor = System.Drawing.SystemColors.Window;
-            this.FineTB.Location = new System.Drawing.Point(712, 28);
-            this.FineTB.Name = "FineTB";
-            this.FineTB.ReadOnly = true;
-            this.FineTB.Size = new System.Drawing.Size(172, 20);
-            this.FineTB.TabIndex = 36;
-            this.FineTB.TextChanged += new System.EventHandler(this.FineTB_TextChanged);
-            // 
-            // CloseBox
-            // 
-            this.CloseBox.Image = global::LibraryManagementSystem.Properties.Resources.exit;
-            this.CloseBox.InitialImage = global::LibraryManagementSystem.Properties.Resources.exit;
-            this.CloseBox.Location = new System.Drawing.Point(1212, 19);
-            this.CloseBox.Name = "CloseBox";
-            this.CloseBox.Size = new System.Drawing.Size(28, 26);
-            this.CloseBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CloseBox.TabIndex = 3;
-            this.CloseBox.TabStop = false;
-            this.CloseBox.Click += new System.EventHandler(this.CloseBox_Click);
-            // 
             // ViewMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,10 +253,10 @@ namespace LibraryManagementSystem.UI
             this.Load += new System.EventHandler(this.ViewMembers_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemberDetails)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CloseBox)).EndInit();
             this.ResumeLayout(false);
 
         }

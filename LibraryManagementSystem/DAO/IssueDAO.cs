@@ -76,6 +76,18 @@ namespace LibraryManagementSystem.DAO
             }
         }
 
+        public DateTime reIssueBook(int Id)
+        {
+            ISSUE Issue = context.ISSUEs.SingleOrDefault(i => i.ID == Id);
+            if (Issue != null)
+            {
+                Issue.RETURN_DATE = Issue.RETURN_DATE.AddDays(7);
+
+                context.SaveChanges();
+            }
+            return Issue.RETURN_DATE;
+        }
+
         public void removeIssue(int Id)
         {
 

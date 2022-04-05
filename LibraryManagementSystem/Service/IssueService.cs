@@ -59,5 +59,10 @@ namespace LibraryManagementSystem.Service
             IssueDAO.returnBook(Id);
         }
 
+        public DateTime reIssueBook(int Id)
+        {
+            return IssueDAO.reIssueBook(Id);
+        }
+
     }
 }
